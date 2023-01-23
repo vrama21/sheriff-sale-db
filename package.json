@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "postinstall": "tsc && mkdir dist && cp src/index.d.ts dist/index.d.ts && npx prisma generate"
+    "postinstall": "tsc && cp src/index.d.ts dist/index.d.ts && npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^4.9.0"
