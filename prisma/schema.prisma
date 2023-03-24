@@ -1,15 +1,54 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-model Example {
-    id String @id @default(cuid())
+model Listing {
+  id            String          @id @default(uuid())
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  address       String
+  attorney      String?
+  attorneyPhone String?
+  city          String?
+  county        String
+  courtCase     String?
+  deed          String?
+  deedAddress   String?
+  defendant     String?
+  description   String?
+  judgment      String?
+  latitude      String?
+  longitude     String?
+  mapsUrl       String?
+  parcel        String?
+  plaintiff     String
+  priors        String?
+  propertyId    String
+  saleDate      String
+  secondaryUnit String?
+  sheriffId     String
+  state         String
+  street        String?
+  streetNumber  String?
+  streetType    String?
+  unit          String?
+  upsetAmount   String?
+  zipcode       String?
+  statusHistory StatusHistory[]
+}
+
+model StatusHistory {
+  id        String   @id @default(uuid())
+  listingId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  date      String
+  status    String
+  listing   Listing  @relation(fields: [listingId], references: [id])
 }

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "lib": ["ES6"],
+    "lib": ["ES6", "DOM"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,9 +15,10 @@
     "jsx": "preserve",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
-    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
     "typeRoots": ["src"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
