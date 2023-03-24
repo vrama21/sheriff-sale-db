@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
-    "postinstall": "tsc && npx prisma generate"
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^4.9.0"
